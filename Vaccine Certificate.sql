@@ -27,22 +27,15 @@ foreign key(br_id) references date_place(br_id));
 
 
 
-CREATE ROLE 'dba', 'vaccine_admin', 'beneficiary';
-
-GRANT ALL ON vaccineCert.* TO 'dba';
-GRANT SELECT ON vaccineCert.* TO 'beneficiary';
-GRANT INSERT, UPDATE ON vaccineCert.beneficiary TO 'beneficiary';
-GRANT SELECT, INSERT, UPDATE ON vaccineCert.vaccination TO 'vaccine_admin';
-GRANT SELECT, INSERT, UPDATE ON vaccineCert.date_place TO 'vaccine_admin';
-
 CREATE USER 'joshi'@'localhost' IDENTIFIED BY 'joshi';
 CREATE USER 'ravneet'@'localhost' IDENTIFIED BY 'ravneet';
 CREATE USER 'athiya'@'localhost' IDENTIFIED BY 'athiya';
 
-GRANT 'dba' TO 'joshi'@'localhost';
-GRANT 'beneficiary' TO 'athiya'@'localhost';
-GRANT 'vaccine_admin' TO 'ravneet'@'localhost';
-
+GRANT ALL ON vaccineCert.* TO 'joshi'@'localhost';
+GRANT SELECT ON vaccineCert.* TO 'athiya'@'localhost';
+GRANT INSERT, UPDATE ON vaccineCert.beneficiary TO 'athiya'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON vaccineCert.vaccination TO 'ravneet'@'localhost';
+GRANT SELECT, INSERT, UPDATE ON vaccineCert.date_place TO 'ravneet'@'localhost';
 
 
 
